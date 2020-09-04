@@ -1,0 +1,16 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/saga_ticket?characterEncoding=UTF-8
+    username: root
+    password: secret
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+mybatis:
+  mapper-locations: classpath:com/example/customer_ticket/*.xml
+  config-location: classpath:mybatis-config.xml

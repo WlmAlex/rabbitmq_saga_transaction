@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learn.rabbitmq_saga.customer_room.dao.RoomRepository">
+    <resultMap id="roomMap" type="room">
+        <id column="room_id" property="roomId"/>
+        <result column="seats_available" property="remainingSeats"/>
+    </resultMap>
+    <update id="save" parameterType="room">
+        update room set seats_available = #{remainingSeats} where room_id = #{roomId};
+    </update>
+
+    <select id="findRoomById" resultMap="roomMap">
+        select room_id, seats_available from room where room_id = #{roomId};
+    </select>
+</mapper>

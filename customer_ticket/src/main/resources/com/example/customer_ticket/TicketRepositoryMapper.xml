@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.customer_ticket.dao.TicketRepository">
+
+    <resultMap id="ticketMap" type="ticket">
+        <id column="ticket_id" property="ticketId"/>
+        <result column="room_id" property="roomId"/>
+        <result column="issued_date" property="issueDate"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <insert id="save" parameterType="ticket" keyProperty="ticketId" useGeneratedKeys="true">
+        insert into ticket(issued_date, room_id, user_id) values(#{issuedDate}, #{roomId}, #{userId});
+    </insert>
+
+    <select id="findTicketById" resultMap="ticketMap">
+        select ticket_id, room_id, issue_date, user_id from ticket where ticket_id = #{ticketId};
+    </select>
+</mapper>

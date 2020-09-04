@@ -1,0 +1,16 @@
+server:
+  port: 8082
+spring:
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/saga_room?characterEncoding=UTF-8
+    username: root
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:/com/learn/rabbitmq_saga/customer_room/*.xml
